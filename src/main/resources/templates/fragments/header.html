@@ -1,0 +1,48 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+
+<body>
+<div th:fragment="header">
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" th:href="@{/home}">repairaza</a>
+                <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+
+                       <div class="center">
+                        <div></div>
+                       </div>
+
+
+
+                </button>
+                <div class="collapse navbar-collapse pullRight" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/home}">home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " th:href="@{/about}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " th:href="@{/itemchoiche}">Items</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+</div>
+
+</body>
+</html>
