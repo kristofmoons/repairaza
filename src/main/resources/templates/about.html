@@ -6,53 +6,53 @@
     <meta charset="UTF-8">
     <title>Repairaza</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
 </head>
 
 <body>
 
 <div class="sticky-top" th:replace="fragments/header ::header">header</div>
 
-<div class="bg-light">
-    <div class="container py-5">
-        <div class="row h-100 align-items-center py-5">
-            <div class="col-lg-6">
-                <h1 class="display-4">About us page</h1>
-                <p class="lead text-muted mb-0">Create a minimal about us page using Bootstrap 4.</p>
-                <p class="lead text-muted">Snippet by <a href="https://bootstrapious.com/snippets" class="text-muted">
-                    <u>Bootstrapious</u></a>
-                </p>
-            </div>
-            <div class="col-lg-6 d-none d-lg-block"><img src="https://bootstrapious.com/i/snippets/sn-about/illus.png" alt="" class="img-fluid"></div>
-        </div>
-    </div>
-</div>
-
 <div class="bg-white py-5">
     <div class="container py-5">
         <div class="row align-items-center mb-5">
             <div class="col-lg-6 order-2 order-lg-1"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
-                <h2 class="font-weight-light">Lorem ipsum dolor sit amet</h2>
-                <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><a href="#" class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a>
+                <h2 class="font-weight-light">Wat doen wij?</h2>
+                <p class="font-italic text-muted mb-4">
+                    Wij helpen u mee een oplossingen te vinden voor zaken die hun waarde zijn verloren.
+                    We restauren bepaalde prodicten met een klein team gespecialiseerde restaureurs.
+                    U kunt ze in slechte staat voorwerpen verkopen, later restaureren.
+                    Of bent u iemand die een opnieuw tot levergebrachte item wilt kopen
+                    dan moet u hier zijn.
+                </p>
+
             </div>
-            <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img src="https://bootstrapious.com/i/snippets/sn-about/img-1.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
+            <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2">
+                <img th:src="@{/images/about1.png}" class="img-fluid mb-4 mb-lg-0">
+            </div>
         </div>
         <div class="row align-items-center">
-            <div class="col-lg-5 px-5 mx-auto"><img src="https://bootstrapious.com/i/snippets/sn-about/img-2.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
+            <div class="col-lg-5 px-5 mx-auto">
+                <img th:src="@{/images/about2.png}" class="img-fluid mb-4 mb-lg-0">
+            </div>
             <div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
-                <h2 class="font-weight-light">Lorem ipsum dolor sit amet</h2>
-                <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><a href="#" class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a>
+                <h2 class="font-weight-light">ons team</h2>
+                <p class="font-italic text-muted mb-4">
+           Ons team restaureurs heeft een brede expertise op het vernieuwen van allerlei verschillende soorten items ongeacht hun staat.
+                    onze verkopers helpen u graag verder met een nieuwe hoofstuk aan het verhaal van een item te geven, of u te helpen om aan een item weer leven te geven
+
+
+                </p>
             </div>
         </div>
     </div>
 </div>
 
 
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 </html>
