@@ -3,15 +3,16 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
 
 </head>
 
 <body>
-<div th:fragment="header">
+<div th:fragment="header" style="margin-top: 8vh" >
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-inverse fixed-top " >
             <div class="container-fluid">
                 <a class="navbar-brand" th:href="@{/home}">repairaza</a>
                 <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
@@ -21,8 +22,6 @@
                        <div class="center">
                         <div></div>
                        </div>
-
-
 
                 </button>
                 <div class="collapse navbar-collapse pullRight" id="navbarSupportedContent">
