@@ -17,21 +17,22 @@
 
 <div th:replace="fragments/header ::header">header</div>
 
-<div class="container h-50">
-    <div class="row align-middle">
+<div class="container h-30 ">
+    <div class="row align-middle ">
 
         <div class="card w-150">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Button</a>
+                <h5 class="card-title">Welkom</h5>
+                <p class="card-text">Als u alle items wilt zien dat we aanbieden druk op de knop onder mij
+                anders kunt u voor een specifieke categorie zoeken.</p>
+                <a th:href="@{/itemlist}" class="btn btn-primary">Alle items</a>
             </div>
         </div>
     </div>
 </div>
 
 
-<div class="container h-100">
+<div class="container h-50">
     <div class="row align-middle">
 
 
