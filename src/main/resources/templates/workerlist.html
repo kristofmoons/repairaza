@@ -10,83 +10,59 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/workerlist.css}" href="/css/workerlist.css"/>
 </head>
 <body>
-
 <div th:replace="fragments/header ::header">header</div>
 
-<h2>le werknemers</h2>
-<div class="container">
-    <!-- Card deck -->
-    <div class="card-deck row">
-        <h2>le restaureurs</h2>
+<div class="container mb-5 ">
+    <div class="text-center mb-3"></div>
+        <h3>restaureurs</h3>
+                <div class="row g-2 text-center" >
 
-        <div  th:each="worker:${workers}">
-            <div class="col-xs-12 col-sm-6 col-md-4" th:if="${worker.getFunction()=='RESTAUREUR'}">
+                    <div th:each="worker:${workers}" th:if="${worker.getFunction()=='RESTAUREUR'}" class="col-md-4" >
 
-                <!-- Card -->
-                <div class="card">
-                    <!--Card image-->
-                    <div class="view overlay">
-                        <img class="card-img-top" th:src="@{/images/about2.png}">
-                        <!--                    <a th:href="@{|/itemDetails/${item.id}|}">-->
-                        <!--                        <div class="mask rgba-white-slight"></div>-->
-                        <!--                    </a>-->
+                        <div class="card"> <img src="https://i.imgur.com/iNFaRXx.jpg" class="img-fluid rounded">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <div class="info info-blue"> <span class="user-icons"><img src="https://i.imgur.com/1NZfd8E.png" width="30"></span>
+                                    <div class="user-profile d-flex flex-row">
+                                        <div class="d-flex flex-column mr-4"> <span class="name" th:text="${worker.getName()}"></span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!--Card content-->
-                    <div class="card-body">
-                        <!--Title-->
-                        <h4 class="card-title" th:text="${worker.getName()}">Card title</h4>
-                        <!--Text-->
-                        <p class="card-text" th:text="${worker.getBio()}"></p>
-                        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                        <!--                    <a class="btn btn-light-blue btn-md" th:href="@{|/itemDetails/${item.id}|}">bekijk item</a>-->
-                    </div>
                 </div>
-                <!-- Card -->
             </div>
         </div>
-        <!-- Card deck -->
+    </div>
+
+<div class="container mb-5 ">
+    <div class="text-center mb-3"></div>
+    <h3>taxateurs</h3>
+    <div class="row g-2 text-center" >
+
+        <div th:each="worker:${workers}" th:if="${worker.getFunction()=='TAXATEUR'}" class="col-md-4" >
+
+            <div class="card"> <img src="https://i.imgur.com/iNFaRXx.jpg" class="img-fluid rounded">
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="info info-blue"> <span class="user-icons"><img src="https://i.imgur.com/1NZfd8E.png" width="30"></span>
+                        <div class="user-profile d-flex flex-row">
+                            <div class="d-flex flex-column mr-4"> <span class="name" th:text="${worker.getName()}"></span> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
+</div>
+</div>
 
-<div class="container">
-    <!-- Card deck -->
-    <div class="card-deck row">
-        <H2>le taxateurs</H2>
-        <div  th:each="worker:${workers}">
-            <div class="col-xs-12 col-sm-6 col-md-4" th:if="${worker.getFunction()=='TAXATEUR'}">
-
-
-                <!-- Card -->
-                <div class="card">
-                    <!--Card image-->
-                    <div class="view overlay">
-                        <img class="card-img-top" th:src="@{/images/about2.png}">
-                        <!--                    <a th:href="@{|/itemDetails/${item.id}|}">-->
-                        <!--                        <div class="mask rgba-white-slight"></div>-->
-                        <!--                    </a>-->
-                    </div>
-
-                    <!--Card content-->
-                    <div class="card-body">
-                        <!--Title-->
-                        <h4 class="card-title" th:text="${worker.getName()}">Card title</h4>
-                        <!--Text-->
-                        <p class="card-text" th:text="${worker.getBio()}"></p>
-                        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                        <!--                    <a class="btn btn-light-blue btn-md" th:href="@{|/itemDetails/${item.id}|}">bekijk item</a>-->
-                    </div>
-                </div>
-                <!-- Card -->
-            </div>
-        </div>
-        <!-- Card deck -->
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                crossorigin="anonymous"></script>
 </body>
 </html>
