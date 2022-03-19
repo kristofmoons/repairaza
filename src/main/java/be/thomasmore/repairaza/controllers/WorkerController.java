@@ -1,7 +1,6 @@
 package be.thomasmore.repairaza.controllers;
 
 import be.thomasmore.repairaza.model.worker;
-import be.thomasmore.repairaza.repositories.ItemRepository;
 import be.thomasmore.repairaza.repositories.WorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
