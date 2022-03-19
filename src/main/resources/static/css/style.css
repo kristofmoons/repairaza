@@ -1,6 +1,7 @@
 body {
     background-size: cover;
-    background: url('../images/cool-background.png')  center;
+    background-repeat: no-repeat;
+    background: url('../images/cool-background.png');
     overflow-x: hidden;
 }
 
