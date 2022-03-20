@@ -7,22 +7,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Repairaza</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
 </head>
 <body>
 
 <div th:replace="fragments/header ::header">header</div>
 
-<h2>items</h2>
+
+<div class="container mt-3">
+    <h2>items</h2>
+    <div th:if="${showFilters}">
+    <form>
+        <div class="input-group mb-3">
+            <label for="name" class="input-group-text">naam</label>
+            <input type="text" class="form-control" id="name" name="name" th:value="${name}">
+            <label for="minPrice" class="input-group-text">min prijs</label>
+            <input type="number" class="form-control" id="minPrice" name="minPrice" th:value="${minPrice}" placeholder="0">
+            <label for="maxPrice" class="input-group-text">max prijs</label>
+            <input type="number" class="form-control" id="maxPrice" name="maxPrice" th:value="${maxPrice}">
+            <label for="soort" class="input-group-text">soort</label>
+            <select class="form-select" id="soort" name="soort" th:value="${soort}">
+                <option selected>alles</option>
+                <option value="watch">horloges</option>
+                <option value="car">voertuigen</option>
+                <option value="furniture">meubels</option>
+                <option value="instrument">instrumenten</option>
+            </select>
+<!--            <label for="intstock" class="input-group-text">in Stock</label>-->
+<!--            <select class="form-select" id="intstock" name="soort" th:value="${intstock}">-->
+<!--                <option selected  value="all"th:checked="${intstock=='all'}">alles</option>-->
+<!--                <option value="yes" th:checked="${intstock=='yes'}">ja</option>-->
+<!--                <option  value="no" th:checked="${intstock=='no'}">nee</option>-->
+<!--            </select>-->
+
+            <input type="submit" class="btn btn-outline-primary bg-light" value="search">
+        </div>
+    </form>
+    </div>
+    <div th:unless="${showFilters}">
+        <a th:href="@{/itemlist/filter}" class="button">showfilter</a>
+    </div>
+</div>
 
 <div class="container">
 
     <!-- Card deck -->
 
-    <div class="card-deck row" >
+    <div class="card-deck row">
 
-        <div class="col-xs-12 col-sm-6 col-md-4" th:each="item:${items}">
+        <div class="col-xs-12 col-sm-6 col-md-4" th:each="item: ${items}">
 
             <!-- Card -->
             <div class="card">
@@ -37,7 +72,7 @@
                 <!--Card content-->
                 <div class="card-body">
                     <!--Title-->
-                    <h4 class="card-title"  th:text="${item.itemName}">Card title</h4>
+                    <h4 class="card-title" th:text="${item.itemName}">Card title</h4>
                     <!--Text-->
                     <p class="card-text">hier komt nog tekst</p>
                     <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
@@ -52,6 +87,8 @@
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@ body {
     overflow-x: hidden;
 }
 
+
 .darkened-image {
     filter: brightness(50%);
 }

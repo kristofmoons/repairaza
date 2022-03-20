@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -39,34 +41,37 @@ public class ItemController {
     @GetMapping({"/itemlist"})
         public String itemlist(Model model){
         final Iterable<Item> allItems =itemRepository.findAll();
+        boolean showFilter = false;
+        model.addAttribute("showFilters",showFilter);
         model.addAttribute("items",allItems);
         return "itemlist";
 
     }
+    private Boolean StringToBoolean(String filterString) {
+        return (filterString == null || filterString.equals("all")) ? null : filterString.equals("yes");
+    }
+    @GetMapping({"/itemlist/filter"})
+    public String itemlistWithFilter(Model model,
+                                     @RequestParam(required = false) String name,
+                                     @RequestParam(required = false) String soort,
+//                                     @RequestParam(required = false) String intstock,
+                                     @RequestParam(required = false) Double minPrice,
+                                     @RequestParam(required = false) Double maxPrice ){
 
-    @GetMapping({"itemlist/{filter}"})
-    public String itemlistWatch(Model model,@PathVariable(required = false) String filter){
-        if (filter == null) return "itemlist";
-        Iterable<Item> items;
-        switch (filter) {
-            case "watch":
-                items = itemRepository.findBySoortObjectEquals("watch");
-                break;
-            case "car":
-                items = itemRepository.findBySoortObjectEquals("car");
-                break;
-            case "furniture":
-                items = itemRepository.findBySoortObjectEquals("furniture");
-                break;
-            case "instruments":
-                items = itemRepository.findBySoortObjectEquals("instruments");
-                break;
-            default:
-                items = itemRepository.findAll();
-                filter = null;
-                break;
-        }
+
+        List<Item> items = itemRepository.findByFilter(minPrice, maxPrice,
+//                StringToBoolean(intstock),
+                name,soort);
+
+        model.addAttribute("showFilters", true);
         model.addAttribute("items", items);
+        model.addAttribute("nrOfItems", items.size());
+        model.addAttribute("name", name);
+        model.addAttribute("soort", soort);
+        model.addAttribute("minPrice", minPrice);
+        model.addAttribute("maxPrice", maxPrice);
+//        model.addAttribute("intstock", intstock);
+
         return "itemlist";
     }
 }
