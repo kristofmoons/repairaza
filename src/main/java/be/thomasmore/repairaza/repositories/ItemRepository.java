@@ -12,12 +12,12 @@ public interface ItemRepository extends CrudRepository<Item, Integer> {
     @Query("SELECT i FROM Item i WHERE " +
             "(:minPrice IS NULL OR :minPrice <= i.price) AND " +
             "(:maxPrice IS NULL OR i.price <= :maxPrice) AND " +
-//            "(:intstock IS NULL OR i.InStock = :instock) AND " +
+            "(:intstock IS NULL OR i.InStock = :intstock) AND " +
             "(:name IS NULL OR  upper(i.itemName)  like upper(concat('%', :name, '%') )) AND " +
             "(:soort IS NULL OR  upper(i.soortObject)  like upper( :soort ))")
     List<Item> findByFilter(@Param("minPrice") Double minPrice,
                             @Param("maxPrice") Double maxPrice,
-//                            @Param("intstock") Boolean intstock,
+                            @Param("intstock") Boolean intstock,
                             @Param("name") String Name,
                             @Param("soort") String soort);
 

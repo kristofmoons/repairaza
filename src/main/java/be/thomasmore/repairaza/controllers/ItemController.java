@@ -2,6 +2,8 @@ package be.thomasmore.repairaza.controllers;
 
 import be.thomasmore.repairaza.model.Item;
 import be.thomasmore.repairaza.repositories.ItemRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,8 @@ import java.util.Optional;
 public class ItemController {
     @Autowired
     private ItemRepository itemRepository;
+
+    private Logger logger =  LoggerFactory.getLogger(ItemController.class);
 
     @GetMapping({"/itemDetails/{id}","/itemDetails"})
     public String itemDetails(Model model, @PathVariable(required = false) Integer id){
@@ -54,14 +58,18 @@ public class ItemController {
     public String itemlistWithFilter(Model model,
                                      @RequestParam(required = false) String name,
                                      @RequestParam(required = false) String soort,
-//                                     @RequestParam(required = false) String intstock,
+                                     @RequestParam(required = false) String intstock,
                                      @RequestParam(required = false) Double minPrice,
                                      @RequestParam(required = false) Double maxPrice ){
 
+        logger.info(String.format("itemListWithFilter ----------minPrice=%d, maxPrice=%d, name=%s, soort=%s, intstock=%s",
+                minPrice,maxPrice,name, soort,intstock));
+        logger.info(soort);
 
         List<Item> items = itemRepository.findByFilter(minPrice, maxPrice,
-//                StringToBoolean(intstock),
-                name,soort);
+                StringToBoolean(intstock),
+               name==null|| name.isBlank()? null: name,
+                soort==null|| soort.isBlank()?null: soort);
 
         model.addAttribute("showFilters", true);
         model.addAttribute("items", items);
@@ -70,7 +78,7 @@ public class ItemController {
         model.addAttribute("soort", soort);
         model.addAttribute("minPrice", minPrice);
         model.addAttribute("maxPrice", maxPrice);
-//        model.addAttribute("intstock", intstock);
+        model.addAttribute("intstock", intstock);
 
         return "itemlist";
     }

@@ -28,19 +28,21 @@
             <label for="maxPrice" class="input-group-text">max prijs</label>
             <input type="number" class="form-control" id="maxPrice" name="maxPrice" th:value="${maxPrice}">
             <label for="soort" class="input-group-text">soort</label>
+
             <select class="form-select" id="soort" name="soort" th:value="${soort}">
-                <option selected>alles</option>
+                <option value="">alles</option>
                 <option value="watch">horloges</option>
                 <option value="car">voertuigen</option>
                 <option value="furniture">meubels</option>
                 <option value="instrument">instrumenten</option>
             </select>
-<!--            <label for="intstock" class="input-group-text">in Stock</label>-->
-<!--            <select class="form-select" id="intstock" name="soort" th:value="${intstock}">-->
-<!--                <option selected  value="all"th:checked="${intstock=='all'}">alles</option>-->
-<!--                <option value="yes" th:checked="${intstock=='yes'}">ja</option>-->
-<!--                <option  value="no" th:checked="${intstock=='no'}">nee</option>-->
-<!--            </select>-->
+
+            <label for="intstock" class="input-group-text">in Stock</label>
+            <select class="form-select" id="intstock" name="intstock" th:value="${intstock}">
+                <option selected  value="all" th:checked="${intstock=='all'}">alles</option>
+                <option value="yes" >ja</option>
+                <option  value="no" >nee</option>
+            </select>
 
             <input type="submit" class="btn btn-outline-primary bg-light" value="search">
         </div>
