@@ -28,17 +28,17 @@
             <div class="row g-0">
                 <div class="col-md-6 border-end">
                     <div class="d-flex flex-column justify-content-center">
-                        <div class="main_image"><img th:src="@{/images/watch.jpg}" id="main_product_image"
+                        <div class="main_image"><img th:src="@{|/images/items/${item.id}/img.png|}" id="main_product_image"
                                                      width="350" loading="lazy"></div>
                         <div class="thumbnail_images">
                             <ul id="thumbnail">
-                                <li><img onclick="changeImage(this)"  th:src="@{/images/watch.jpg}" width="70"
+                                <li><img onclick="changeImage(this)"  th:src="@{|/images/items/${item.id}/img.png|}" width="70"
                                          loading="lazy"></li>
-                                <li><img onclick="changeImage(this)" th:src="@{/images/furniture.jpg}" width="70"
+                                <li><img onclick="changeImage(this)" th:src="@{|/images/items/${item.id}/img_1.png|}" width="70"
                                          loading="lazy"></li>
-                                <li><img onclick="changeImage(this)" th:src="@{/images/instruments.jpg}" width="70"
+                                <li><img onclick="changeImage(this)" th:src="@{|/images/items/${item.id}/img_2.png|}" width="70"
                                          loading="lazy"></li>
-                                <li><img onclick="changeImage(this)" th:src="@{/images/car.jpg}" width="70"
+                                <li><img onclick="changeImage(this)" th:src="@{|/images/items/${item.id}/img_3.png|}" width="70"
                                          loading="lazy"></li>
                             </ul>
                         </div>
