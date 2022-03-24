@@ -76,7 +76,7 @@
             <div class="card">
                 <!--Card image-->
                 <div class="view overlay">
-                    <img class="card-img-top" th:src="@{/images/about2.png}">
+                    <img class="card-img-top" th:src="@{|/images/items/${item.id}/img.png|}">
                     <a th:href="@{|/itemDetails/${item.id}|}">
                         <div class="mask rgba-white-slight"></div>
                     </a>
