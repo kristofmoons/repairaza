@@ -14,6 +14,9 @@
 .h-50 {
     height: 50vh !important;
 }
+.btn{
+    text-align: left;
+}
 
 .align-middle {
     position: relative;

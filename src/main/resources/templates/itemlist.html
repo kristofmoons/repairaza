@@ -26,6 +26,7 @@
                 filter
             </button>
         </p>
+        <a th:href="@{/itemlist}" class="btn btn-primary ">hide</a>
         <div class="row position-fixed" style="z-index: 2; top: 170px; left: 10px">
             <div class="col">
                 <div class="collapse multi-collapse" id="filter">
@@ -76,7 +77,7 @@
             <div class="card">
                 <!--Card image-->
                 <div class="view overlay">
-                    <img class="card-img-top img-fluid" th:src="@{|/images/items/${item.id}/img.png|}" >
+                    <img class="card-img-top" th:src="@{|/images/items/${item.id}/img.png|}" >
                     <a th:href="@{|/itemDetails/${item.id}|}">
                         <div class="mask rgba-white-slight"></div>
                     </a>
@@ -89,7 +90,7 @@
                     <!--Text-->
                     <p class="card-text">hier komt nog tekst</p>
                     <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                    <a class="btn btn-light-blue btn-md" th:href="@{|/itemDetails/${item.id}|}">bekijk item</a>
+                    <a class="btn btn-light-blue btn-md" th:href="@{|/itemDetails/${item.id}|}" style="background-color:gainsboro; ">bekijk item</a>
 
                 </div>
             </div>

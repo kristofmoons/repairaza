@@ -31,7 +31,7 @@
         <div class="col-md-4">
             <h3 class="my-3">biografie</h3>
             <p th:text="${worker.getBio()}"></p>
-            <h3 class="my-3">Project Details</h3>
+            <h3 class="my-3">project details</h3>
             <ul>
                 <li>Lorem Ipsum</li>
                 <li>Dolor Sit Amet</li>
@@ -51,7 +51,7 @@
 
         <div class="col-md-3 col-sm-6 mb-4" th:each="item:${worker.getItems()}">
             <a href="#">
-                <img class="img-fluid"th:src="@{|/images/items/${item.id}/img.png|}" style="height: 150px;width: 250px;">
+                <img class="img-fluid cropped"th:src="@{|/images/items/${item.id}/img.png|}" style="height: 150px;width: 250px;">
             </a>
         </div>
 

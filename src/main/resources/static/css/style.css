@@ -19,6 +19,18 @@ body {
 header{
    width: 100%;
 }
+.cropped{
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+    object-position: center;
+}
+.card-img-top {
+    width: 100%;
+    height: 30vw;
+    object-fit: cover;
+    object-position: center;
+}
 
 *:focus, .navbar-toggler:focus {
     outline: none !important;
