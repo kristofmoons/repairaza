@@ -50,7 +50,7 @@
 
 
         <div class="col-md-3 col-sm-6 mb-4" th:each="item:${worker.getItems()}">
-            <a href="#">
+            <a th:href="@{|/itemDetails/${item.id}|}">
                 <img class="img-fluid cropped"th:src="@{|/images/items/${item.id}/img.png|}" style="height: 150px;width: 250px;">
             </a>
         </div>
