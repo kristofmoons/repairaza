@@ -14,6 +14,6 @@ INSERT INTO ITEM_WORKERS (ITEMS_ID, WORKERS_ID) VALUES
                                                        (4, 1),
                                                        (1, 2),
                                                        (2, 2),
-                                                       (2, 2),
-                                                       (2, 2);
+                                                       (3, 2),
+                                                       (4, 2);
 
