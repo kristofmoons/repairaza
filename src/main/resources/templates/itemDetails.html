@@ -54,12 +54,24 @@
                                 ut
                                 labore et dolore magna aliqua</p>
                         </div>
-                        <h3 th:text="|€ ${item.getPrice()}|"></h3>
-                        <div class="ratings d-flex flex-row align-items-center">
-                            <div class="d-flex flex-row"><i class="bx bxs-star"></i> <i class="bx bxs-star"></i> <i
-                                    class="bx bxs-star"></i> <i class="bx bxs-star"></i> <i class="bx bx-star"></i>
+                        <h3 th:text="|€ ${item.getPrice()}|"></h3><br>
+
+                        <div th:if="${item.getWorkers().size() >0}">
+                            <h3 th:text="|getaxteerd door|"></h3>
+                            <div th:each="worker:${item.getWorkers()}">
+                                <div th:if="${worker.getFunction()=='TAXATEUR'}">
+                                    <a th:href="@{@{|/workerdetails/${worker.id}|}}" th:text=" ${worker.getName()}"></a>
+                                </div>
+                            </div><br>
+                            <h3 th:text="|gerestaureerd door|"></h3>
+                            <div th:each="worker:${item.getWorkers()}">
+                                <div th:if="${worker.getFunction()=='RESTAUREUR'}">
+                                    <a th:href="@{@{|/workerdetails/${worker.id}|}}" th:text=" ${worker.getName()}"></a>
+                                </div>
                             </div>
-                            <span>441 reviews</span>
+
+
+                        </div>
                         </div>
                         <div class="mt-5"><span class="fw-bold">Color</span>
                             <div class="colors">

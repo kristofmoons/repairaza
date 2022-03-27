@@ -2,6 +2,8 @@ package be.thomasmore.repairaza.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.Collection;
 
 @Entity
 public class worker {
@@ -10,6 +12,9 @@ public class worker {
     private String name;
     private String function;
     private String bio;
+
+    @ManyToMany(mappedBy = "workers")
+    private Collection<Item> items;
 
     public worker() {
     }
@@ -51,5 +56,13 @@ public class worker {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public Collection<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(Collection<Item> items) {
+        this.items = items;
     }
 }

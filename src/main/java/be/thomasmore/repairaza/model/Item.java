@@ -1,7 +1,10 @@
 package be.thomasmore.repairaza.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.Collection;
 
 @Entity
 public class Item {
@@ -12,6 +15,10 @@ public class Item {
     private String soortObject;
     private boolean InStock;
     private double price;
+
+    @ManyToMany
+    private Collection<worker>workers;
+
 
     public Item() {
     }
@@ -61,5 +68,13 @@ public class Item {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Collection<worker> getWorkers() {
+        return workers;
+    }
+
+    public void setWorkers(Collection<worker> workers) {
+        this.workers = workers;
     }
 }
