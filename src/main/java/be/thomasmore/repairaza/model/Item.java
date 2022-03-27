@@ -12,6 +12,7 @@ public class Item {
 
     private String itemName;
     private String soortObject;
+    private String itemDetails;
     private boolean InStock;
     private double price;
 
@@ -67,6 +68,14 @@ public class Item {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getItemDetails() {
+        return itemDetails;
+    }
+
+    public void setItemDetails(String itemDetails) {
+        this.itemDetails = itemDetails;
     }
 
     public Collection<worker> getWorkers() {
