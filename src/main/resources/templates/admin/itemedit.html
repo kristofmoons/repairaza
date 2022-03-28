@@ -19,78 +19,71 @@
 
 <div th:if="${item}">
 
-    <a class="button" th:href="@{|/itemDetails/${prevId}|}">prev</a>
-    <a class="button" th:href="@{|/itemDetails/${nextId}|}">next</a>
-
 
     <div class="container mt-5 mb-5">
         <div class="card">
             <div class="row g-0">
                 <div class="col-md-6 border-end">
                     <div class="d-flex flex-column justify-content-center">
-                        <div class="main_image"><img th:src="@{|/images/items/${item.id}/img.png|}" id="main_product_image"
+                        <div class="main_image"><img th:src="@{|/images/items/${item.id}/img.png|}"
+                                                     id="main_product_image"
                                                      width="350" loading="lazy"></div>
                         <div class="thumbnail_images">
                             <ul id="thumbnail">
-                                <li><img onclick="changeImage(this)"  th:src="@{|/images/items/${item.id}/img.png|}" width="70"
+                                <li><img onclick="changeImage(this)" th:src="@{|/images/items/${item.id}/img.png|}"
+                                         width="70"
                                          loading="lazy"></li>
-                                <li><img onclick="changeImage(this)" th:src="@{|/images/items/${item.id}/img_1.png|}" width="70"
+                                <li><img onclick="changeImage(this)" th:src="@{|/images/items/${item.id}/img_1.png|}"
+                                         width="70"
                                          loading="lazy"></li>
-                                <li><img onclick="changeImage(this)" th:src="@{|/images/items/${item.id}/img_2.png|}" width="70"
+                                <li><img onclick="changeImage(this)" th:src="@{|/images/items/${item.id}/img_2.png|}"
+                                         width="70"
                                          loading="lazy"></li>
-                                <li><img onclick="changeImage(this)" th:src="@{|/images/items/${item.id}/img_3.png|}" width="70"
+                                <li><img onclick="changeImage(this)" th:src="@{|/images/items/${item.id}/img_3.png|}"
+                                         width="70"
                                          loading="lazy"></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="p-3 right-side">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h3 th:text="${item.getItemName()}"></h3>
-                        </div>
-                        <div class="mt-2 pr-3 content">
-                            <p th:text="${item.itemDetails}"></p>
-                        </div>
-                        <h3 th:text="|€ ${item.getPrice()}|"></h3><br>
+                    <div class="col-md-6">
+                        <form th:action="@{|/admin/itemedit/${item.id}|}" method="post">
 
-                        <div th:if="${item.getWorkers().size() >0}">
-                            <h3 th:text="|getaxteerd door|"></h3>
-                            <div th:each="worker:${item.getWorkers()}">
-                                <div th:if="${worker.getFunction()=='TAXATEUR'}">
-                                    <a th:href="@{@{|/workerdetails/${worker.id}|}}" th:text=" ${worker.getName()}"></a>
-                                </div>
-                            </div><br>
-                            <h3 th:text="|gerestaureerd door|"></h3>
-                            <div th:each="worker:${item.getWorkers()}">
-                                <div th:if="${worker.getFunction()=='RESTAUREUR'}">
-                                    <a th:href="@{@{|/workerdetails/${worker.id}|}}" th:text=" ${worker.getName()}"></a>
-                                </div>
+                        <div class="p-3 right-side">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <label for="itemName">name: </label>
+                                <input id="itemName" name="itemName" value="name" th:value="${item.itemName}">
                             </div>
+                            <div class="mt-2 pr-3 content">
+                                <p th:text="${item.itemDetails}"></p>
+                            </div>
+                            <h3 th:text="|€ ${item.getPrice()}|"></h3><br>
+
+                            <div th:if="${item.getWorkers().size() >0}">
+                                <h3 th:text="|getaxteerd door|"></h3>
+                                <div th:each="worker:${item.getWorkers()}">
+                                    <div th:if="${worker.getFunction()=='TAXATEUR'}">
+                                        <a th:href="@{@{|/workerdetails/${worker.id}|}}"
+                                           th:text=" ${worker.getName()}"></a>
+                                    </div>
+                                </div>
+                                <br>
+                                <h3 th:text="|gerestaureerd door|"></h3>
+                                <div th:each="worker:${item.getWorkers()}">
+                                    <div th:if="${worker.getFunction()=='RESTAUREUR'}">
+                                        <a th:href="@{@{|/workerdetails/${worker.id}|}}"
+                                           th:text=" ${worker.getName()}"></a>
+                                    </div>
+                                </div>
 
 
+                            </div>
                         </div>
-                    </div>
-                    <div class="mt-5"><span class="fw-bold">Color</span>
-                        <div class="colors">
-                            <ul id="marker">
-                                <li id="marker-1"></li>
-                                <li id="marker-2"></li>
-                                <li id="marker-3"></li>
-                                <li id="marker-4"></li>
-                                <li id="marker-5"></li>
-                            </ul>
+                        <div class="buttons d-flex flex-row mt-5 gap-3">
+                            <button class="btn btn-dark">edit</button>
                         </div>
+                </form>
                     </div>
-                    <div class="buttons d-flex flex-row mt-5 gap-3">
-                        <button class="btn btn-outline-dark">Buy Now</button>
-                        <button class="btn btn-dark">Add to Basket</button>
-                    </div>
-                    <div class="search-option"><i class="bx bx-search-alt-2 first-search"></i>
-                        <div class="inputs"><input type="text" name=""></div>
-                        <i class="bx bx-share-alt share"></i>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
