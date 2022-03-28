@@ -25,6 +25,7 @@
                 filter
             </button>
         <a th:href="@{/itemlist}" class="btn btn-primary ">hide</a>
+        <a th:href="@{/admin/itemnew}" class="btn btn-primary ">new</a>
         <div class="row position-fixed" style="z-index: 2; top: 170px; left: 10px">
             <div class="col">
                 <div class="collapse multi-collapse" id="filter">
@@ -60,6 +61,7 @@
     </div>
     <div th:unless="${showFilters}">
         <a th:href="@{/itemlist/filter}" class="btn btn-primary ">showfilter</a>
+        <a th:href="@{/admin/itemnew}" class="btn btn-primary ">new</a>
     </div>
 </div>
 

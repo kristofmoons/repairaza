@@ -18,6 +18,10 @@ public class Restaureur {
     public Restaureur() {
     }
 
+    public Restaureur(Integer id) {
+        this.id = id;
+    }
+
     public Restaureur(Integer id, String name, String bio) {
         this.id = id;
         this.name = name;

@@ -1,6 +1,7 @@
 package be.thomasmore.repairaza.controllers;
 
 import be.thomasmore.repairaza.model.Item;
+import be.thomasmore.repairaza.model.Restaureur;
 import be.thomasmore.repairaza.model.Taxateur;
 import be.thomasmore.repairaza.repositories.ItemRepository;
 import be.thomasmore.repairaza.repositories.RestaureurRepository;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.Optional;
 
 @Controller
@@ -28,7 +30,9 @@ public class AdminController {
 
 
     @ModelAttribute("item")
-    public Item findItem(@PathVariable Integer id) {
+    public Item findItem(@PathVariable(required = false) Integer id) {
+        if (id == null) return new Item();
+
         Optional<Item> optionalItem = itemRepository.findById(id);
         if (optionalItem.isPresent())
             return optionalItem.get();
@@ -72,6 +76,27 @@ public class AdminController {
         return "redirect:/admin/itemedit/" + id;
 
     }
+    @GetMapping("/itemnew")
+    public String itemNew(Model model) {
+        logger.info("itemNew ");
+        model.addAttribute("item", new Item());
+        model.addAttribute("taxateurs", taxateurRepository.findAll());
+        model.addAttribute("restaureurs",restaureurRepository.findAll());
+        return "admin/itemnew";
+    }
 
+    @PostMapping("/itemnew")
+    public String itemNewPost(Model model,
+                               @ModelAttribute("item") Item item,
+//                              @RequestParam int restaureurId
+                              @RequestParam int taxateurId
+    ) {
+        logger.info("itemNewPost -- new name=" + item.getItemName());
+//        item.setRestaureurs((Collection<Restaureur>) new Restaureur(restaureurId));
+        item.setTaxateurs(new Taxateur(taxateurId));
+        item.setInStock(true);
+        Item newItem = itemRepository.save(item);
+        return "redirect:/itemDetails/" + newItem.getId();
+    }
 
 }
