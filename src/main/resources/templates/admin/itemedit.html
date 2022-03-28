@@ -50,14 +50,17 @@
                         <form th:action="@{|/admin/itemedit/${item.id}|}" method="post">
 
                         <div class="p-3 right-side">
-                            <div class="d-flex justify-content-between align-items-center">
+
                                 <label for="itemName">name: </label>
                                 <input id="itemName" name="itemName" value="name" th:value="${item.itemName}">
-                            </div>
-                            <div class="mt-2 pr-3 content">
-                                <p th:text="${item.itemDetails}"></p>
-                            </div>
-                            <h3 th:text="|€ ${item.getPrice()}|"></h3><br>
+
+                                <label for="itemDetails">beschrijving: </label>  <br>
+                            <textarea class="mb-1" id="itemDetails" name="itemDetails" th:field="${item.itemDetails}" style="width:100%; height: 100px">
+                            </textarea>
+                            <br>
+                            <label for="itemPrice">prijs: </label>
+                            <input type="number" id="itemPrice" name="itemPrice" value="price" th:value="${item.price}">
+                            <br>
 
                             <div th:if="${item.getWorkers().size() >0}">
                                 <h3 th:text="|getaxteerd door|"></h3>
@@ -79,9 +82,8 @@
 
                             </div>
                         </div>
-                        <div class="buttons d-flex flex-row mt-5 gap-3">
-                            <button class="btn btn-dark">edit</button>
-                        </div>
+                            <a th:href="@{|/itemDetails/${item.id}|}" class="btn btn-dark">cancel</a>
+                            <input type="submit" class="btn btn-dark" value="save">
                 </form>
                     </div>
             </div>

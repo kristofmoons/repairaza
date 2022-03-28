@@ -33,12 +33,18 @@ public class AdminController {
     @PostMapping("/itemedit/{id}")
     public String itemEditPost(Model model,
                                 @PathVariable int id,
-                                @RequestParam String itemName) {
+                                @RequestParam String itemName,
+                               @RequestParam String itemDetails,
+                               @RequestParam double itemPrice) {
         logger.info("itemEditPost " + id + " -- new name=" + itemName);
         Optional<Item> optionalItem = itemRepository.findById(id);
+
         if (optionalItem.isPresent()) {
            Item item = optionalItem.get();
+
             item.setItemName(itemName);
+            item.setItemDetails(itemDetails);
+            item.setPrice(itemPrice);
             itemRepository.save(item);
             model.addAttribute("item", item);
         }
