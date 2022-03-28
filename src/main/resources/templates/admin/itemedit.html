@@ -66,7 +66,6 @@
                             <select class="form-select" id="taxateur" th:name="taxateurId" >
                                 <option th:each="taxateur:${taxateurs}" th:value="${taxateur.id}"
                                         th:text="${taxateur.name}" th:selected="${taxateur.id==item.getTaxateurs().id}"></option>
-
                             </select>
 
                         </div>

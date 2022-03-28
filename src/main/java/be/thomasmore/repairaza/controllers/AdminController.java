@@ -46,7 +46,6 @@ public class AdminController {
             model.addAttribute("item", optionalItem.get());
         }
         model.addAttribute("taxateurs", taxateurRepository.findAll());
-        model.addAttribute("restaureurs", restaureurRepository.findAll());
         return "admin/itemedit";
     }
 
@@ -57,8 +56,7 @@ public class AdminController {
                                @RequestParam String itemName,
                                @RequestParam String itemDetails,
                                @RequestParam double itemPrice,
-                               @RequestParam int taxateurId
-    ) {
+                               @RequestParam int taxateurId) {
 
 
         if (item.getTaxateurs().getId() != taxateurId) {

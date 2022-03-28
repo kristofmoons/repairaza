@@ -5,6 +5,8 @@ import java.util.Collection;
 
 @Entity
 public class Item {
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_generator")
+    @SequenceGenerator(name = "item_generator",sequenceName = "item_seq",allocationSize = 1)
     @Id
     private Integer id;
 
