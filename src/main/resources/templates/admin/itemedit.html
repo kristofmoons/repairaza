@@ -62,21 +62,11 @@
                             <input type="number" id="itemPrice" name="itemPrice" value="price" th:value="${item.price}">
                             <br>
 
-                            <label for="taxateur" class="input-group-text">taxateur:</label>
-                            <select class="form-select" id="taxateur" name="taxateur" >
-                                <div th:each="worker:${item.getWorkers()}">
-                                    <div th:if="${worker.getFunction()=='TAXATEUR'}">
-                                        <option th:value="${worker.getName()}">naam</option>
-                                    </div>
-                                </div>
-                            </select>
-                            <label for="restauteur" class="input-group-text">restauteur:</label>
-                            <select class="form-select" id="restauteur" name="restauteur" >
-                                <div th:each="worker:${item.getWorkers()}">
-                                    <div th:if="${worker.getFunction()=='RESTAUREUR'}">
-                                        <option th:value="${worker.getName()}">naam</option>
-                                    </div>
-                                </div>
+                            <label for="taxateur" >taxateur:</label>
+                            <select class="form-select" id="taxateur" th:name="taxateurId" >
+                                <option th:each="taxateur:${taxateurs}" th:value="${taxateur.id}"
+                                        th:text="${taxateur.name}"></option>
+
                             </select>
 
                         </div>

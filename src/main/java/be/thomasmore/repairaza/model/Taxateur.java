@@ -19,6 +19,10 @@ public class Taxateur {
     public Taxateur() {
     }
 
+    public Taxateur(int id) {
+        this.id=id;
+    }
+
     public Taxateur(Integer id, String name, String bio) {
         this.id = id;
         this.name = name;

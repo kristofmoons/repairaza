@@ -2,7 +2,9 @@ INSERT INTO "PUBLIC"."RESTAUREUR" VALUES
                                   (1, 'Ik vond als kind dingen restaureren leuk', 'Jos De Wolf'),
                                   (2, 'ik heb iets geleerd en bladi bla bla', 'Tim De Kat');
 INSERT INTO "PUBLIC"."TAXATEUR" VALUES
-                                      (1, 'Ik vond het altijd leuk om mensen af te zetten met verkeerde prijzen ', 'Jef Het Schaap');
+                                      (1, 'Ik vond het altijd leuk om mensen af te zetten met verkeerde prijzen ', 'Jef Het Schaap'),
+                                      (2, 'Ik wou altijd van alles alle prijzen weten', 'louis de visser');
+
 INSERT INTO "PUBLIC"."ITEM" VALUES
                                 (1, TRUE,'een horloge van omega gemaakt voor te gaan duiken', 'omega seamaster', 1000.0, 'watch',1),
                                 (2, TRUE,'een klassier van wagens gemaakt in 1962', 'cadillac de ville', 25000.0, 'car',1),

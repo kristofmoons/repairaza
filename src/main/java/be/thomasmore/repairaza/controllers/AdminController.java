@@ -1,7 +1,10 @@
 package be.thomasmore.repairaza.controllers;
 
 import be.thomasmore.repairaza.model.Item;
+import be.thomasmore.repairaza.model.Taxateur;
 import be.thomasmore.repairaza.repositories.ItemRepository;
+import be.thomasmore.repairaza.repositories.RestaureurRepository;
+import be.thomasmore.repairaza.repositories.TaxateurRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +21,24 @@ public class AdminController {
 
     @Autowired
     private ItemRepository itemRepository;
+    @Autowired
+    private TaxateurRepository taxateurRepository;
+    @Autowired
+    private RestaureurRepository restaureurRepository;
+
+
+    @ModelAttribute("item")
+    public Item findItem(@PathVariable Integer id) {
+        Optional<Item> optionalItem = itemRepository.findById(id);
+        if (optionalItem.isPresent())
+            return optionalItem.get();
+
+        return null;
+    }
 
     @GetMapping("/itemedit/{id}")
     public String itemEdit(Model model,
-                            @PathVariable Integer id) {
+                           @PathVariable Integer id) {
         if (id == null) return "admin/itemEdit";
 
         Optional<Item> optionalItem = itemRepository.findById(id);
@@ -30,25 +47,31 @@ public class AdminController {
         }
         return "admin/itemedit";
     }
+
     @PostMapping("/itemedit/{id}")
     public String itemEditPost(Model model,
-                                @PathVariable int id,
-                                @RequestParam String itemName,
+                               @PathVariable int id,
+                               @ModelAttribute("item") Item item,
+                               @RequestParam String itemName,
                                @RequestParam String itemDetails,
-                               @RequestParam double itemPrice) {
-        logger.info("itemEditPost " + id + " -- new name=" + itemName);
-        Optional<Item> optionalItem = itemRepository.findById(id);
+                               @RequestParam double itemPrice,
+                               @RequestParam int taxateurId
+    ) {
+        final Iterable<Taxateur> allTaxateurs = taxateurRepository.findAll();
 
-        if (optionalItem.isPresent()) {
-           Item item = optionalItem.get();
-
-            item.setItemName(itemName);
-            item.setItemDetails(itemDetails);
-            item.setPrice(itemPrice);
-            itemRepository.save(item);
-            model.addAttribute("item", item);
+        if (item.getTaxateurs().getId() != taxateurId) {
+            item.setTaxateurs(new Taxateur(taxateurId));
         }
-        return "admin/itemedit";
+        model.addAttribute("item", item);
+        model.addAttribute("taxateurs", allTaxateurs);
+        item.setItemName(itemName);
+        item.setItemDetails(itemDetails);
+        item.setPrice(itemPrice);
+        itemRepository.save(item);
+
+
+        return "redirect:/admin/itemedit/" + id;
+
     }
 
 
