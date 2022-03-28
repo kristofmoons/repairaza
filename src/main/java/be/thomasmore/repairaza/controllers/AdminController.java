@@ -45,6 +45,8 @@ public class AdminController {
         if (optionalItem.isPresent()) {
             model.addAttribute("item", optionalItem.get());
         }
+        model.addAttribute("taxateurs", taxateurRepository.findAll());
+        model.addAttribute("restaureurs", restaureurRepository.findAll());
         return "admin/itemedit";
     }
 
@@ -57,17 +59,16 @@ public class AdminController {
                                @RequestParam double itemPrice,
                                @RequestParam int taxateurId
     ) {
-        final Iterable<Taxateur> allTaxateurs = taxateurRepository.findAll();
+
 
         if (item.getTaxateurs().getId() != taxateurId) {
             item.setTaxateurs(new Taxateur(taxateurId));
         }
-        model.addAttribute("item", item);
-        model.addAttribute("taxateurs", allTaxateurs);
         item.setItemName(itemName);
         item.setItemDetails(itemDetails);
         item.setPrice(itemPrice);
         itemRepository.save(item);
+        model.addAttribute("item", item);
 
 
         return "redirect:/admin/itemedit/" + id;
