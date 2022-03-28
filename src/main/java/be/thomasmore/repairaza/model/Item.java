@@ -1,8 +1,6 @@
 package be.thomasmore.repairaza.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
@@ -16,8 +14,11 @@ public class Item {
     private boolean InStock;
     private double price;
 
-    @ManyToMany
-    private Collection<worker>workers;
+    @ManyToMany (fetch = FetchType.LAZY)
+    private Collection<Restaureur>restaureurs;
+
+    @ManyToOne (fetch = FetchType.LAZY)
+    private Taxateur taxateurs;
 
 
     public Item() {
@@ -78,11 +79,19 @@ public class Item {
         this.itemDetails = itemDetails;
     }
 
-    public Collection<worker> getWorkers() {
-        return workers;
+    public Collection<Restaureur> getRestaureurs() {
+        return restaureurs;
     }
 
-    public void setWorkers(Collection<worker> workers) {
-        this.workers = workers;
+    public void setRestaureurs(Collection<Restaureur> restaureurs) {
+        this.restaureurs = restaureurs;
+    }
+
+    public Taxateur getTaxateurs() {
+        return taxateurs;
+    }
+
+    public void setTaxateurs(Taxateur taxateurs) {
+        this.taxateurs = taxateurs;
     }
 }

@@ -62,25 +62,23 @@
                             <input type="number" id="itemPrice" name="itemPrice" value="price" th:value="${item.price}">
                             <br>
 
-                            <div th:if="${item.getWorkers().size() >0}">
-                                <h3 th:text="|getaxteerd door|"></h3>
+                            <label for="taxateur" class="input-group-text">taxateur:</label>
+                            <select class="form-select" id="taxateur" name="taxateur" >
                                 <div th:each="worker:${item.getWorkers()}">
                                     <div th:if="${worker.getFunction()=='TAXATEUR'}">
-                                        <a th:href="@{@{|/workerdetails/${worker.id}|}}"
-                                           th:text=" ${worker.getName()}"></a>
+                                        <option th:value="${worker.getName()}">naam</option>
                                     </div>
                                 </div>
-                                <br>
-                                <h3 th:text="|gerestaureerd door|"></h3>
+                            </select>
+                            <label for="restauteur" class="input-group-text">restauteur:</label>
+                            <select class="form-select" id="restauteur" name="restauteur" >
                                 <div th:each="worker:${item.getWorkers()}">
                                     <div th:if="${worker.getFunction()=='RESTAUREUR'}">
-                                        <a th:href="@{@{|/workerdetails/${worker.id}|}}"
-                                           th:text=" ${worker.getName()}"></a>
+                                        <option th:value="${worker.getName()}">naam</option>
                                     </div>
                                 </div>
+                            </select>
 
-
-                            </div>
                         </div>
                             <a th:href="@{|/itemDetails/${item.id}|}" class="btn btn-dark">cancel</a>
                             <input type="submit" class="btn btn-dark" value="save">

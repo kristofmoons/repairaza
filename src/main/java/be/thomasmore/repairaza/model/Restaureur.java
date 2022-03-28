@@ -6,23 +6,21 @@ import javax.persistence.ManyToMany;
 import java.util.Collection;
 
 @Entity
-public class worker {
+public class Restaureur {
     @Id
     private Integer id;
     private String name;
-    private String function;
     private String bio;
 
-    @ManyToMany(mappedBy = "workers")
+    @ManyToMany(mappedBy = "restaureurs")
     private Collection<Item> items;
 
-    public worker() {
+    public Restaureur() {
     }
 
-    public worker(Integer id, String name, String function, String bio) {
+    public Restaureur(Integer id, String name, String bio) {
         this.id = id;
         this.name = name;
-        this.function = function;
         this.bio = bio;
     }
 
@@ -38,16 +36,8 @@ public class worker {
         return name;
     }
 
-    public void setName(String naam) {
-        this.name = naam;
-    }
-
-    public String getFunction() {
-        return function;
-    }
-
-    public void setFunction(String functie) {
-        this.function = functie;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getBio() {

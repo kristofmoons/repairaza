@@ -19,18 +19,18 @@
 <div class="container bg-light">
 
     <!-- Portfolio Item Heading -->
-    <h1 class="my-4" th:text="${worker.getName()}"></h1>
+    <h1 class="my-4" th:text="${restaureur.getName()}"></h1>
 
     <!-- Portfolio Item Row -->
     <div class="row">
 
         <div class="col-md-8">
-            <img class="img-fluid" th:src="@{|/images/workers/${worker.id}/img.png|}" alt="" style="height:400px ;width: 300px;">
+            <img class="img-fluid" th:src="@{|/images/restaureurs/${restaureur.id}/img.png|}" alt="" style="height:400px ;width: 300px;">
         </div>
 
         <div class="col-md-4">
             <h3 class="my-3">biografie</h3>
-            <p th:text="${worker.getBio()}"></p>
+            <p th:text="${restaureur.getBio()}"></p>
             <h3 class="my-3">project details</h3>
             <ul>
                 <li>Lorem Ipsum</li>
@@ -49,7 +49,7 @@
     <div class="row">
 
 
-        <div class="col-md-3 col-sm-6 mb-4" th:each="item:${worker.getItems()}">
+        <div class="col-md-3 col-sm-6 mb-4" th:each="item:${restaureur.getItems()}">
             <a th:href="@{|/itemDetails/${item.id}|}">
                 <img class="img-fluid cropped"th:src="@{|/images/items/${item.id}/img.png|}" style="height: 150px;width: 250px;">
             </a>

@@ -1,7 +1,9 @@
 package be.thomasmore.repairaza.controllers;
 
-import be.thomasmore.repairaza.model.worker;
-import be.thomasmore.repairaza.repositories.WorkerRepository;
+import be.thomasmore.repairaza.model.Restaureur;
+import be.thomasmore.repairaza.model.Taxateur;
+import be.thomasmore.repairaza.repositories.RestaureurRepository;
+import be.thomasmore.repairaza.repositories.TaxateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,28 +15,39 @@ import java.util.Optional;
 @Controller
 public class WorkerController {
     @Autowired
-    private WorkerRepository workerRepository;
+    private TaxateurRepository taxateurRepository;
+    @Autowired
+    private RestaureurRepository restaureurRepository;
 
     @GetMapping({"/workerlist"})
     public String workerlist(Model model){
-        final Iterable<worker> allWorkers =workerRepository.findAll();
+        final Iterable<Taxateur> allTaxateurs =taxateurRepository.findAll();
+        final Iterable<Restaureur> allRestaureurs =restaureurRepository.findAll();
 
-        model.addAttribute("workers",allWorkers);
+        model.addAttribute("taxateurs",allTaxateurs);
+        model.addAttribute("restaureurs",allRestaureurs);
         return "workerlist";
 
     }
 
-    @GetMapping({"/workerdetails/{id}","/workerdetails"})
-    public String workerdetails(Model model, @PathVariable(required = false) Integer id){
-        if (id == null) return "workerdetails";
+    @GetMapping({"/taxateurdetails/{id}","/taxateurdetails"})
+    public String taxateurdetails(Model model, @PathVariable(required = false) Integer id){
+        if (id == null) return "taxateurdetails";
 
-        Optional<worker> workerFromDb = workerRepository.findById(id);
-        if (workerFromDb.isPresent()){
-            model.addAttribute("worker",workerFromDb.get());
+        Optional<Taxateur> taxateurFromDb = taxateurRepository.findById(id);
+        if (taxateurFromDb.isPresent()){
+            model.addAttribute("taxateur",taxateurFromDb.get());
         }
-        int nrOfWorkers = (int) workerRepository.count();
-        model.addAttribute("prevId",  id > 1 ? id-1 : nrOfWorkers);
-        model.addAttribute("nextId", id < nrOfWorkers ? id + 1 : 1);
-        return "workerdetails";
+        return "taxateurdetails";
+    }
+    @GetMapping({"/restaureurdetails/{id}","/restaureurdetails"})
+    public String restaureurdetails(Model model, @PathVariable(required = false) Integer id){
+        if (id == null) return "restaureurdetails";
+
+        Optional<Restaureur> restaureurFromDb = restaureurRepository.findById(id);
+        if (restaureurFromDb.isPresent()){
+            model.addAttribute("restaureur",restaureurFromDb.get());
+        }
+        return "restaureurdetails";
     }
 }
