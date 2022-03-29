@@ -1,6 +1,7 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
@@ -25,7 +26,7 @@
                 filter
             </button>
         <a th:href="@{/itemlist}" class="btn btn-primary ">hide</a>
-        <a th:href="@{/admin/itemnew}" class="btn btn-primary ">new</a>
+        <a th:href="@{/admin/itemnew}" class="btn btn-primary "  sec:authorize="hasAuthority('ADMIN')">new</a>
         <div class="row position-fixed" style="z-index: 2; top: 170px; left: 10px">
             <div class="col">
                 <div class="collapse multi-collapse" id="filter">
@@ -61,7 +62,7 @@
     </div>
     <div th:unless="${showFilters}">
         <a th:href="@{/itemlist/filter}" class="btn btn-primary ">showfilter</a>
-        <a th:href="@{/admin/itemnew}" class="btn btn-primary ">new</a>
+        <a th:href="@{/admin/itemnew}" class="btn btn-primary "  sec:authorize="hasAuthority('ADMIN')">new</a>
     </div>
 </div>
 
@@ -92,7 +93,7 @@
                     <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
                     <a class="btn btn-light-blue btn-md" th:href="@{|/itemDetails/${item.id}|}" style="background-color:gainsboro; ">bekijk item</a>
                     <div class="pt-1">
-                        <a th:href="@{|/admin/itemedit/${item.id}|}" class="btn btn-primary ">edit</a>
+                        <a th:href="@{|/admin/itemedit/${item.id}|}" class="btn btn-primary "  sec:authorize="hasAuthority('ADMIN')">edit</a>
                     </div>
                 </div>
             </div>
