@@ -18,5 +18,14 @@ INSERT INTO ITEM_RESTAUREURS (ITEMS_ID, RESTAUREURS_ID) VALUES
                                                     (4, 1),
                                                     (5, 2);
 
+INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) VALUES
+    (nextval('USER_SEQ'), 'admin',
+     'admin',
+     'ADMIN');
+INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) VALUES
+    (nextval('USER_SEQ'), 'Roland',
+     'password',
+     'USER');
+
 
 
