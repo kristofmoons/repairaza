@@ -11,5 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
                     .antMatchers("/admin/**").authenticated()
                     .anyRequest().permitAll()
                     .and().formLogin();
+            http.csrf().ignoringAntMatchers("/h2-console/**")
+                    .and().headers().frameOptions().sameOrigin();
         }
 }
