@@ -20,11 +20,11 @@ INSERT INTO ITEM_RESTAUREURS (ITEMS_ID, RESTAUREURS_ID) VALUES
 
 INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) VALUES
     (nextval('USER_SEQ'), 'admin',
-     'admin',
+     '$2a$10$9MIX8kYPkuB7uE/H5nHF8.KG6.YdjBA/voOnjSZnZDxLXL/2BIerS',
      'ADMIN');
 INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) VALUES
-    (nextval('USER_SEQ'), 'Roland',
-     'password',
+    (nextval('USER_SEQ'), 'roland',
+     '$2a$10$9TeBFudS7HsgCa4sSvP//O627sMq.KiTFrOr8IzrVlYw5c8aoKzNm',
      'USER');
 
 
