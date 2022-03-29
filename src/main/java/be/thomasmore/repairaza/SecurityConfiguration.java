@@ -19,7 +19,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin/**").authenticated()
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .anyRequest().permitAll()
                 .and().formLogin();
         http.csrf().ignoringAntMatchers("/h2-console/**")
