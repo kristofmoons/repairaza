@@ -68,6 +68,12 @@
                                         th:text="${taxateur.name}" th:selected="${taxateur.id==item.getTaxateurs().id}"></option>
                             </select>
 
+                            <label for="restaureur" >taxateur:</label>
+                            <select class="form-select" id="restaureur" th:name="restaureurId" >
+                                <option th:each="restaureur:${restaureurs}" th:value="${restaureur.id}"
+                                        th:text="${restaureur.name}" th:selected="${restaureur.id==item.getrestaureur().id}"></option>
+                            </select>
+
                         </div>
                             <a th:href="@{|/itemDetails/${item.id}|}" class="btn btn-dark">cancel</a>
                             <input type="submit" class="btn btn-dark" value="save">

@@ -50,6 +50,8 @@ public class AdminController {
             model.addAttribute("item", optionalItem.get());
         }
         model.addAttribute("taxateurs", taxateurRepository.findAll());
+        model.addAttribute("restaureurs",restaureurRepository.findAll());
+
         return "admin/itemedit";
     }
 
@@ -60,7 +62,8 @@ public class AdminController {
                                @RequestParam String itemName,
                                @RequestParam String itemDetails,
                                @RequestParam double itemPrice,
-                               @RequestParam int taxateurId) {
+                               @RequestParam int taxateurId,
+                               @RequestParam int restaureurId) {
 
 
         if (item.getTaxateurs().getId() != taxateurId) {
@@ -68,6 +71,7 @@ public class AdminController {
         }
         item.setItemName(itemName);
         item.setItemDetails(itemDetails);
+        item.setRestaureurs((Collection<Restaureur>) new Restaureur(restaureurId));
         item.setPrice(itemPrice);
         itemRepository.save(item);
         model.addAttribute("item", item);
