@@ -1,6 +1,7 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,19 +10,21 @@
 </head>
 
 <body>
-<div th:fragment="header" style="margin-top: 8vh" >
+<div th:fragment="header" >
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-inverse fixed-top " >
             <div class="container-fluid">
                 <a class="navbar-brand" th:href="@{/home}">repairaza</a>
+
                 <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
 
-                       <div class="center">
+                       <div class="center ">
                         <div></div>
                        </div>
+
 
                 </button>
                 <div class="collapse navbar-collapse pullRight" id="navbarSupportedContent">
@@ -38,8 +41,14 @@
                         <li class="nav-item">
                             <a class="nav-link " th:href="@{/workerlist}">Workers</a>
                         </li>
+                        <li class="nav-item">
+                            <a class=" nav-link" th:href="@{/login}" sec:authorize!="isAuthenticated()">log in</a>
+                            <a class=" nav-link" th:href="@{/logout}" sec:authorize="isAuthenticated()">log out</a>
+                        </li>
+
                     </ul>
                 </div>
+
             </div>
         </nav>
 
