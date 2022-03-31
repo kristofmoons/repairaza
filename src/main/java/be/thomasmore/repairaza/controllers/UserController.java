@@ -8,6 +8,12 @@ import be.thomasmore.repairaza.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +37,23 @@ public class UserController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    private void autologin(String userName, String password) {
+        UsernamePasswordAuthenticationToken token
+                = new UsernamePasswordAuthenticationToken(userName, password);
+
+        try {
+            Authentication auth = authenticationManager.authenticate(token);
+            logger.info("authentication: " + auth.isAuthenticated());
+
+            SecurityContext sc = SecurityContextHolder.getContext();
+            sc.setAuthentication(auth);
+        } catch (AuthenticationException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     @GetMapping("/register")
@@ -60,6 +83,8 @@ public class UserController {
        newLiefhebber.setNickName(name);
        newLiefhebber.setUser(newSavedUser);
        liefhebberRepository.save(newLiefhebber);
+
+        autologin(username, password);
 
         return "redirect:/itemlist";
     }
