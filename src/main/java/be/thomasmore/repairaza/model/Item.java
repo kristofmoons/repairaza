@@ -22,6 +22,9 @@ public class Item {
     @ManyToOne (fetch = FetchType.LAZY)
     private Taxateur taxateurs;
 
+    @ManyToMany (fetch = FetchType.LAZY)
+    private Collection<Liefhebber>liefhebbers;
+
 
     public Item() {
     }
@@ -95,5 +98,13 @@ public class Item {
 
     public void setTaxateurs(Taxateur taxateurs) {
         this.taxateurs = taxateurs;
+    }
+
+    public Collection<Liefhebber> getLiefhebbers() {
+        return liefhebbers;
+    }
+
+    public void setLiefhebbers(Collection<Liefhebber> liefhebbers) {
+        this.liefhebbers = liefhebbers;
     }
 }

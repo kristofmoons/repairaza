@@ -27,5 +27,9 @@ INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) VALUES
      '$2a$10$9TeBFudS7HsgCa4sSvP//O627sMq.KiTFrOr8IzrVlYw5c8aoKzNm',
      'USER');
 
+INSERT INTO "PUBLIC"."LIEFHEBBER" VALUES
+                                      (1, 'admin', 1),
+                                      (2, 'ghosta', 2);
+
 
 
