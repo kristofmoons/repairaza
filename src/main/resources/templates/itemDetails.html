@@ -1,7 +1,8 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <!--suppress XmlUnusedNamespaceDeclaration -->
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
@@ -20,11 +21,10 @@
 
 <div th:if="${item}">
 
-    <a class="button" th:href="@{|/itemDetails/${prevId}|}">prev</a>
-    <a class="button" th:href="@{|/itemDetails/${nextId}|}">next</a>
 
 
-    <div class="container mt-5 mb-5">
+
+    <div class="container mt-5 pt-5 mb-5">
         <div class="card">
             <div class="row g-0">
                 <div class="col-md-6 border-end">
@@ -76,20 +76,19 @@
 
                         </div>
                     </div>
-                    <div class="mt-5"><span class="fw-bold">Color</span>
-                        <div class="colors">
-                            <ul id="marker">
-                                <li id="marker-1"></li>
-                                <li id="marker-2"></li>
-                                <li id="marker-3"></li>
-                                <li id="marker-4"></li>
-                                <li id="marker-5"></li>
-                            </ul>
-                        </div>
+                    <div class="mt-5">
+                        <a class="btn btn-dark" th:href="@{|/itemDetails/${prevId}|}">prev</a>
+                        <a class="btn btn-dark" th:href="@{|/itemDetails/${nextId}|}">next</a>
                     </div>
                     <div class="buttons d-flex flex-row mt-5 gap-3">
                         <button class="btn btn-outline-dark">Buy Now</button>
                         <button class="btn btn-dark">Add to Basket</button>
+
+                        <div class="going" sec:authorize="hasAuthority('USER')">
+                            <form th:action="@{|/itemleuk/${item.id}|}" method="post">
+                                <input type="submit" th:value="${vindLeuk ?  '<3': '</3' }" class="btn btn-primary">
+                            </form>
+                        </div>
                     </div>
                     <div class="search-option"><i class="bx bx-search-alt-2 first-search"></i>
                         <div class="inputs"><input type="text" name=""></div>
