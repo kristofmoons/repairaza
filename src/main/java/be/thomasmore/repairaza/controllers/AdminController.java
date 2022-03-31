@@ -62,16 +62,19 @@ public class AdminController {
                                @RequestParam String itemName,
                                @RequestParam String itemDetails,
                                @RequestParam double itemPrice,
-                               @RequestParam int taxateurId,
-                               @RequestParam int restaureurId) {
+                               @RequestParam int taxateurId
+//                               @RequestParam int restaureurId
+                               ) {
 
 
         if (item.getTaxateurs().getId() != taxateurId) {
             item.setTaxateurs(new Taxateur(taxateurId));
         }
+//        if (item.getRestaureurs().hashCode() != restaureurId) {
+//            item.setRestaureurs((Collection<Restaureur>) new Restaureur(restaureurId)))
+//        }
         item.setItemName(itemName);
         item.setItemDetails(itemDetails);
-        item.setRestaureurs((Collection<Restaureur>) new Restaureur(restaureurId));
         item.setPrice(itemPrice);
         itemRepository.save(item);
         model.addAttribute("item", item);
