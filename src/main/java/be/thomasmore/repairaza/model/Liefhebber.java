@@ -22,7 +22,7 @@ public class Liefhebber {
     public Liefhebber() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -37,7 +37,6 @@ public class Liefhebber {
     public void setNickName(String nickName) {
         this.nickName = nickName;
     }
-
 
     public Collection<Item> getItems() {
         return items;

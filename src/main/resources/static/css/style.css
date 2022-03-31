@@ -32,6 +32,12 @@ header{
     max-height: 768px;
     min-width: auto;
 }
+.titel{
+    font-size: 60px;
+}
+.titel2{
+    font-size: 30px;
+}
 
 /*navbar css*/
 header{

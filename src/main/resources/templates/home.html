@@ -25,18 +25,28 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="10000">
-            <div >
+            <div class="carousel-caption d-none d-md-block">
+                <div sec:authorize="!isAuthenticated()">
+                    <h1 class="titel" th:text="|We zien dat je nog niet bent ingelogd of dit je eerste bezoek is de volgende links helpen je wel verder|"></h1>
+                    <a th:href="@{/user/register}" class="btn btn-primary">registreer je</a>
+                    <a th:href="@{/user/register}" class="btn btn-primary">log in</a>
+                </div>
+
+                <div sec:authorize="isAuthenticated()">
+
+                    <h1 th:if="${naam!=null}" th:text="|Hello ${naam}|">hello</h1>
+                    <p class="titel2"> blij je terug te zien, we hopen dat je interessante items kan vinden </p>
+
+                </div>
 
             </div>
-            <div class="carousel-caption d-none d-md-block">
-                <h1 th:if="${loginName!=null}" th:text="|Hello ${loginName}|">hello</h1>
-                <div >
-                    <a th:if="${loginName!=null}" th:href="@{|/logout|}" class="btn  btn-primary">logout</a>
-                    <a th:if="${loginName==null}" th:href="@{|/login|}" class="btn  btn-primary">login</a>
-                </div>
-            </div>
         </div>
+
         <div class="carousel-item" data-bs-interval="10000">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="titel">wil je meer weten over ons?</h5>
+                <p class="titel2">dan kunt u simpelweg gewoon naar onze about us pagina gaan en dan weet je wat we doen en wie we zijn.</p>
+            </div>
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
