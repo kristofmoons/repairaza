@@ -12,7 +12,7 @@ public class Liefhebber {
     private Integer id;
     private String nickName;
 
-    @ManyToMany(mappedBy = "liefhebbers")
+    @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Item> items;
 
     @OneToOne(fetch = FetchType.LAZY)
@@ -45,7 +45,6 @@ public class Liefhebber {
     public void setItems(Collection<Item> items) {
         this.items = items;
     }
-
 
     public User getUser() {
         return user;

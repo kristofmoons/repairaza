@@ -56,10 +56,10 @@ public class UserController {
         newUser.setPassword(encode);
         User newSavedUser = userRepository.save(newUser);
 
-        Liefhebber newLiefhebber = new Liefhebber();
-        newLiefhebber.setNickName(name);
-        newLiefhebber.setUser(newSavedUser);
-        liefhebberRepository.save(newLiefhebber);
+       Liefhebber newLiefhebber =new Liefhebber();
+       newLiefhebber.setNickName(name);
+       newLiefhebber.setUser(newSavedUser);
+       liefhebberRepository.save(newLiefhebber);
 
         return "redirect:/itemlist";
     }
