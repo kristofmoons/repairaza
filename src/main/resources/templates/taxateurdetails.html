@@ -15,6 +15,7 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
 <div th:replace="fragments/header ::header">header</div>
+<div th:if="${taxateur}">
 
 <!-- Page Content -->
 <div class="container bg-light">
@@ -61,6 +62,7 @@
 
 </div>
 <!-- /.container -->
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
