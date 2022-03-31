@@ -42,8 +42,8 @@
                             <a class="nav-link " th:href="@{/workerlist}">Workers</a>
                         </li>
                         <li class="nav-item">
-                            <a class=" nav-link" th:href="@{/login}" sec:authorize="!isAuthenticated()">log in</a>
-                            <a class=" nav-link" th:href="@{/logout}" sec:authorize="isAuthenticated()">log out</a>
+                            <a class=" nav-link" th:href="@{/user/login}" sec:authorize="!isAuthenticated()">log in</a>
+                            <a class=" nav-link" th:href="@{/user/logout}" sec:authorize="isAuthenticated()">log out</a>
                         </li>
 
                     </ul>

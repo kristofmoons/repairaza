@@ -21,27 +21,13 @@
 
 <div class="wrapper coolbackground">
     <div class="text-center mt-4 name"> repairaza </div>
-    <form class="p-3 mt-3" th:action="@{|/user/register|}" method="post">
+    <form class="p-3 mt-3" th:action="@{|/user/login|}" method="post">
 
-        <div class="form-field d-flex align-items-center">
-            <span class="far fa-user"></span>
-            <input id="username" name="username"  value="" placeholder="typ je username">
-        </div>
 
-        <div class="form-field d-flex align-items-center">
-            <span class="fas fa-key"></span>
-            <input  id="password" type="password" name="password"  value="" placeholder="typ je Password">
-        </div>
-
-        <div class="form-field d-flex align-items-center">
-            <span class="fas fa-key"></span>
-            <input  id="name" name="name"  value="" placeholder="typ je display naam">
-        </div>
-
-        <button class="btn mt-3" type="submit" >registreer</button>
+        <button class="btn mt-3" type="submit" value="logout" >log je uit</button>
 
     </form>
-    <div class="text-center fs-6"> <a th:href="@{|/user/login|}">log in</a> of <a th:href="@{|/itemlist|}">annuleer</a> </div>
+    <div class="text-center fs-6"> <a th:href="@{|/itemlist|}">annuleer</a> </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

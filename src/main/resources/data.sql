@@ -31,7 +31,7 @@ VALUES (nextval('USER_SEQ'), 'roland',
         'USER');
 
 INSERT INTO "PUBLIC"."LIEFHEBBER"
-VALUES (nextval('liefhebber_seq'), 'admin', 2),
+VALUES
        (nextval('liefhebber_seq'), 'ghosta', 2);
 
 
