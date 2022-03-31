@@ -13,8 +13,6 @@ public class User {
     String password;
     String role;
 
-    @OneToOne(mappedBy = "user", optional = false)
-    private Liefhebber liefhebber;
 
     public User() {
     }
@@ -51,12 +49,4 @@ public class User {
         this.role = role;
     }
 
-
-    public Liefhebber getLiefhebber() {
-        return liefhebber;
-    }
-
-    public void setLiefhebber(Liefhebber liefhebber) {
-        this.liefhebber = liefhebber;
-    }
 }
